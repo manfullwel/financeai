@@ -1,6 +1,7 @@
 import { Box, Button, Container, Typography, Paper, Grid } from '@mui/material';
 import { Timeline, ShowChart, Psychology, Security } from '@mui/icons-material';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Landing() {
   return (
@@ -24,6 +25,30 @@ export default function Landing() {
           >
             Get Started
           </Button>
+        </Box>
+
+        {/* Demo Charts Section */}
+        <Box sx={{ mb: 8 }}>
+          <Typography variant="h4" align="center" gutterBottom>
+            Powerful Analytics at Your Fingertips 📊
+          </Typography>
+          <Grid container spacing={4} sx={{ mt: 4 }}>
+            <Grid item xs={12}>
+              <Paper sx={{ p: 2, display: 'flex', justifyContent: 'center' }}>
+                <Box sx={{ position: 'relative', width: '100%', height: '400px' }}>
+                  <iframe
+                    src="/demo-charts"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      border: 'none',
+                      borderRadius: '4px',
+                    }}
+                  />
+                </Box>
+              </Paper>
+            </Grid>
+          </Grid>
         </Box>
 
         {/* Features Grid */}
