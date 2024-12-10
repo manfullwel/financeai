@@ -5,6 +5,33 @@
   <p><strong>Advanced Financial Analysis with AI/ML Capabilities</strong></p>
 </div>
 
+# 🚀 FinanceAI
+
+<div align="center">
+  <img src="/frontend/public/images/readme/prediction-chart.svg" alt="FinanceAI Prediction Chart" width="800"/>
+  
+  > **Transforming financial data into actionable insights with AI** 📈
+</div>
+
+## 🌟 Key Features
+
+### 📊 Advanced Analytics Dashboard
+![Analytics Dashboard](/frontend/public/images/charts-preview.svg)
+
+- **Smart Predictions**: AI-powered market trend forecasting
+- **Portfolio Analysis**: Real-time performance tracking
+- **Risk Management**: Advanced risk metrics and alerts
+
+### 🤖 AI-Powered Features
+- **Machine Learning Models**: Predict market trends with high accuracy
+- **Natural Language Processing**: Analyze market sentiment from news
+- **Pattern Recognition**: Identify trading opportunities automatically
+
+### 📱 Modern User Interface
+- **Responsive Design**: Works seamlessly on all devices
+- **Interactive Charts**: Rich data visualization
+- **Real-time Updates**: Live market data and alerts
+
 ## 🚀 Overview
 
 FinanceAI is a sophisticated financial analysis platform that combines modern web technologies with advanced machine learning capabilities. It provides a comprehensive suite of tools for financial data analysis, predictive modeling, and automated trading strategies.

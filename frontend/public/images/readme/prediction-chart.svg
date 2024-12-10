@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="600" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .chart-title { font-family: Arial; font-size: 14px; fill: #333; }
+    .axis-label { font-family: Arial; font-size: 12px; fill: #666; }
+  </style>
+  
+  <!-- Title -->
+  <text x="300" y="30" class="chart-title" text-anchor="middle">Stock Price Prediction with Confidence</text>
+  
+  <!-- Actual Price Line -->
+  <path d="M50,150 C150,100 250,180 550,120" fill="none" stroke="#8884d8" stroke-width="2"/>
+  
+  <!-- Predicted Price Line -->
+  <path d="M50,155 C150,105 250,185 550,125" fill="none" stroke="#82ca9d" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Confidence Area -->
+  <path d="M50,160 C150,110 250,190 550,130 L550,140 C250,200 150,120 50,170 Z" fill="#8884d8" fill-opacity="0.1"/>
+  
+  <!-- Legend -->
+  <g transform="translate(450, 250)">
+    <line x1="0" y1="0" x2="20" y2="0" stroke="#8884d8" stroke-width="2"/>
+    <text x="25" y="5" class="axis-label">Actual</text>
+    <line x1="0" y1="20" x2="20" y2="20" stroke="#82ca9d" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="25" y="25" class="axis-label">Predicted</text>
+  </g>
+</svg>
