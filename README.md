@@ -165,6 +165,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Igor J. Soares - Lead Developer
 
-## 📞 Contact
+## 📞 Contact & Support
 
-For questions or feedback, please open an issue or contact us at [igorjose.santos@gmail.com].
+Hey there! 👋 Got questions or ideas? Reach out to me:
+- Email: [igor.J.Soares@gmail.com](mailto:igor.J.Soares@gmail.com)
+- Telegram: [@bigdsta](https://t.me/bigdsta)
+
+Feel free to open an issue or send me a message - I'm always happy to help!
