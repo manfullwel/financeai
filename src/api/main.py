@@ -195,11 +195,9 @@ async def root():
     }
 
 @app.get("/health")
-async def health_check():
-    return {
-        "status": "healthy",
-        "timestamp": datetime.now().isoformat()
-    }
+def health_check_v2() -> dict[str, str]:
+    return {"status": "healthy"}
+    return {"status": "healthy"}
 
 @app.get("/api/health")
 async def health_check():
@@ -269,7 +267,8 @@ async def upload_files(files: List[UploadFile] = File(...)):
             
             elif content_type == 'text/csv':
                 # Simulate CSV analysis
-                df = pd.read_csv(content)
+                import io
+                df = pd.read_csv(io.BytesIO(content))
                 result = {
                     'filename': file.filename,
                     'type': 'CSV',
