@@ -1,10 +1,11 @@
 [phases.setup]
-nixPkgs = ["python312", "nodejs-18_x", "yarn", "python312Packages.pip"]
+nixPkgs = ["python312", "nodejs-18_x", "yarn", "python312Packages.pip", "python312Packages.virtualenv"]
 
 [phases.install]
 cmds = [
-  "python -m ensurepip --upgrade",
-  "python -m pip install --upgrade pip",
+  "virtualenv /opt/venv",
+  ". /opt/venv/bin/activate",
+  "pip install --upgrade pip setuptools wheel",
   "pip install -r requirements.txt",
   "cd frontend && yarn install"
 ]
@@ -16,4 +17,4 @@ cmds = [
 ]
 
 [start]
-cmd = "python -m uvicorn src.api.main:app --host 0.0.0.0 --port ${PORT:-8000}"
+cmd = ". /opt/venv/bin/activate && python -m uvicorn src.api.main:app --host 0.0.0.0 --port ${PORT:-8000}"
