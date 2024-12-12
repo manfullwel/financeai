@@ -194,6 +194,13 @@ async def root():
         "docs_url": "/docs"
     }
 
+@app.get("/health")
+async def health_check():
+    return {
+        "status": "healthy",
+        "timestamp": datetime.now().isoformat()
+    }
+
 @app.get("/api/health")
 async def health_check():
     """
