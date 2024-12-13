@@ -1,25 +1,19 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
-import { 
-  Home as HomeIcon,
+import { useState } from 'react';
+import { DashboardLayout } from '@/components/layout/DashboardLayout';
+import { Grid, Box } from '@mui/material';
+import {
   AccountBalance as BankIcon,
   TrendingUp as TrendingUpIcon,
-  Settings as SettingsIcon,
-  Person as UserIcon,
-  Notifications as BellIcon,
-  Search as SearchIcon,
-  Menu as MenuIcon,
+  AttachMoney as MoneyIcon,
+  Assessment as AssessmentIcon
 } from '@mui/icons-material';
-import { Box } from '@mui/material';
-import dynamic from 'next/dynamic';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import DashboardCard from '../components/DashboardCard';
+import { AreaChartStyled } from '@/components/charts/AreaChartStyled';
+import { LineChartStyled } from '@/components/charts/LineChartStyled';
 
-const Sidebar = dynamic(() => import('../components/Sidebar'), {
-  loading: () => null
-});
-
-const data = [
+const marketData = [
   { name: 'Jan', value: 4000 },
   { name: 'Fev', value: 3000 },
   { name: 'Mar', value: 5000 },
@@ -29,153 +23,76 @@ const data = [
   { name: 'Jul', value: 3490 },
 ];
 
-const DashboardCard = ({ title, value, trend, icon: Icon, type = 'default' }: { title: string; value: string | number; trend?: number; icon: React.ElementType; type?: 'default' | 'market' }) => {
-  const isPositive = trend !== undefined && trend > 0;
-  const trendClass = isPositive ? 'market-value-up' : 'market-value-down';
-  const cardClass = isPositive ? 'market-card-up' : 'market-card-down';
-
-  return (
-    <div className={`dashboard-card ${type === 'market' ? cardClass : ''}`}>
-      <div className="card-header">
-        <Icon className="card-icon" />
-        <h3>{title}</h3>
-      </div>
-      <div className="card-content">
-        <p className="card-value">{value}</p>
-        {trend !== undefined && (
-          <p className={trendClass}>
-            {trend}%
-            {isPositive ? <TrendingUpIcon size={16} /> : <TrendingUpIcon size={16} />}
-          </p>
-        )}
-      </div>
-    </div>
-  );
-};
-
-const CustomTooltip = ({ active, payload, label }: { active: boolean; payload: any; label: string }) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className="custom-tooltip">
-        <p className="label">{`${label} : R$ ${payload[0].value}`}</p>
-      </div>
-    );
-  }
-  return null;
-};
+const predictionData = [
+  { name: 'Jan', atual: 4000, previsto: 4100 },
+  { name: 'Fev', atual: 3000, previsto: 3200 },
+  { name: 'Mar', atual: 5000, previsto: 4800 },
+  { name: 'Abr', atual: 2780, previsto: 3000 },
+  { name: 'Mai', atual: 1890, previsto: 2000 },
+  { name: 'Jun', atual: 2390, previsto: 2500 },
+  { name: 'Jul', atual: 3490, previsto: 3600 },
+];
 
 export default function Home() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  if (!isClient) {
-    return null;
-  }
-
   return (
-    <Box sx={{ 
-      display: 'flex', 
-      minHeight: '100vh',
-      bgcolor: '#0a1929',
-      position: 'relative'
-    }}>
-      <Suspense fallback={null}>
-        <Sidebar />
-      </Suspense>
-      
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          ml: { xs: 0, sm: '240px' },
-          width: { xs: '100%', sm: `calc(100% - 240px)` },
-          position: 'relative',
-          zIndex: 1
-        }}
-      >
-        <div className="dashboard-container">
-          <h1>Dashboard Financeiro</h1>
-          
-          <div className="dashboard-grid">
+    <DashboardLayout>
+      <Box className="animate-fade-in">
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6} md={3}>
             <DashboardCard
               title="Saldo Total"
-              value="R$ 25.000,00"
-              icon={BankIcon}
+              value={25000.00}
+              type="currency"
+              icon={<BankIcon />}
+              trend="positive"
             />
+          </Grid>
+          
+          <Grid item xs={12} sm={6} md={3}>
             <DashboardCard
               title="Rendimento Mensal"
-              value="R$ 2.500,00"
-              trend={8.5}
-              icon={TrendingUpIcon}
-              type="market"
+              value={8.5}
+              type="percentage"
+              icon={<TrendingUpIcon />}
+              trend="positive"
             />
+          </Grid>
+          
+          <Grid item xs={12} sm={6} md={3}>
             <DashboardCard
-              title="Despesas"
-              value="R$ 1.800,00"
-              trend={-2.3}
-              icon={TrendingUpIcon}
-              type="market"
+              title="Gastos Mensais"
+              value={1800.00}
+              type="currency"
+              icon={<MoneyIcon />}
+              trend="negative"
             />
+          </Grid>
+          
+          <Grid item xs={12} sm={6} md={3}>
             <DashboardCard
-              title="Alertas"
-              value="3"
-              icon={BellIcon}
+              title="Score de Crédito"
+              value={850}
+              icon={<AssessmentIcon />}
+              description="Excelente"
             />
-          </div>
+          </Grid>
 
-          <div className="charts-grid">
-            <div className="chart-container market-overview">
-              <div className="chart-header">
-                <HomeIcon size={24} />
-                <h3>Visão Geral do Mercado</h3>
-              </div>
-              <ResponsiveContainer width="100%" height={300}>
-                <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                  <defs>
-                    <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-                      <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
-                    </linearGradient>
-                  </defs>
-                  <XAxis dataKey="name" stroke="#fff" />
-                  <YAxis stroke="#fff" />
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-                  <Tooltip content={<CustomTooltip />} />
-                  <Area type="monotone" dataKey="value" stroke="#8884d8" fillOpacity={1} fill="url(#colorValue)" />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
+          <Grid item xs={12} md={8}>
+            <AreaChartStyled
+              data={marketData}
+              title="Visão Geral do Mercado"
+              gradientColor="#2563eb"
+            />
+          </Grid>
 
-            <div className="indicators-grid">
-              <div className="indicator">
-                <HomeIcon size={24} />
-                <div>
-                  <h4>Volume de Negociação</h4>
-                  <p>R$ 1.5M</p>
-                </div>
-              </div>
-              <div className="indicator">
-                <HomeIcon size={24} />
-                <div>
-                  <h4>Distribuição de Ativos</h4>
-                  <p>32% Ações</p>
-                </div>
-              </div>
-              <div className="indicator">
-                <HomeIcon size={24} />
-                <div>
-                  <h4>Volatilidade</h4>
-                  <p>Baixa</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          <Grid item xs={12} md={4}>
+            <LineChartStyled
+              data={predictionData}
+              title="Previsão vs Realizado"
+            />
+          </Grid>
+        </Grid>
       </Box>
-    </Box>
+    </DashboardLayout>
   );
 }
