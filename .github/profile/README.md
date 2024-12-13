@@ -1,7 +1,7 @@
 # 💫 Welcome to FinanceAI
 
 <div align="center">
-  <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQxIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzI1NjNlYjtzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNGY0NmU1O3N0b3Atb3BhY2l0eToxIiAvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkMSkiLz4KICA8dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIHN0eWxlPSJmb250LWZhbWlseTpBcmlhbDtmb250LXNpemU6NDhweDtmb250LXdlaWdodDpib2xkIj5GaW5hbmNlQUk8L3RleHQ+Cjwvc3ZnPg==" alt="FinanceAI Banner" width="100%">
+  <img src="./images/banner.svg" alt="FinanceAI Banner" width="100%">
   
   [![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://financeai.vercel.app)
   [![Railway](https://img.shields.io/badge/Railway-131415?style=for-the-badge&logo=railway&logoColor=white)](https://railway.app)
@@ -15,8 +15,55 @@
 FinanceAI is a cutting-edge financial analytics platform that combines modern design principles with powerful AI capabilities. Our mission is to democratize financial intelligence through an intuitive and beautiful interface.
 
 <div align="center">
-  <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZDIiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojMWYyOTM3O3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMxMTE4Mjc7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQyKSIvPgo8L3N2Zz4=" alt="Dashboard Preview" width="80%">
+  <img src="./images/dashboard.svg" alt="Dashboard Preview" width="80%">
 </div>
+
+## 🚀 Quick Start Guide
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- Python (v3.10 or higher)
+- pnpm (v8 or higher)
+- Git
+
+### Frontend Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/financeai.git
+cd financeai
+
+# Install frontend dependencies
+cd frontend
+pnpm install
+
+# Create .env.local file
+cp .env.example .env.local
+
+# Start development server
+pnpm dev
+```
+
+### Backend Setup
+
+```bash
+# Navigate to backend directory
+cd backend
+
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: .\venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Create .env file
+cp .env.example .env
+
+# Start backend server
+uvicorn main:app --reload
+```
 
 ## 🎨 UI/UX Design Philosophy
 
@@ -146,6 +193,26 @@ $accent-yellow: #f59e0b;
 // Neutral Colors
 $neutral-50: #f9fafb;
 $neutral-900: #111827;
+```
+
+## 📦 Project Structure
+
+```
+financeai/
+├── frontend/              # Next.js frontend
+│   ├── src/
+│   │   ├── components/    # Reusable components
+│   │   ├── providers/     # Context providers
+│   │   ├── styles/        # Global styles
+│   │   └── utils/         # Helper functions
+│   └── pages/            # Next.js pages
+├── backend/              # FastAPI backend
+│   ├── app/
+│   │   ├── models/       # Database models
+│   │   ├── schemas/      # Pydantic schemas
+│   │   └── services/     # Business logic
+│   └── tests/           # Backend tests
+└── docs/                # Documentation
 ```
 
 ## 🌟 Contributing
