@@ -2,9 +2,9 @@ name: FinanceAI CI/CD Pipeline
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   test-backend:
@@ -67,7 +67,7 @@ jobs:
     name: Build and Deploy
     needs: [test-backend, test-frontend]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     
     steps:
     - uses: actions/checkout@v4
