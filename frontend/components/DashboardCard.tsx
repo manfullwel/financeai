@@ -1,13 +1,13 @@
 'use client';
 
-import { LucideIcon } from 'lucide-react';
 import { ReactNode } from 'react';
+import { SvgIconComponent } from '@mui/icons-material';
 
 interface DashboardCardProps {
   title: string;
   value: string | number;
   trend?: 'positive' | 'negative' | 'neutral';
-  icon?: ReactNode;
+  icon?: ReactNode | SvgIconComponent;
   type?: 'currency' | 'percentage' | 'number';
   description?: string;
   chartData?: Array<{ value: number }>;
