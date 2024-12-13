@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/node"
+      "use": "@vercel/next"
     }
   ],
   "routes": [
@@ -12,7 +12,8 @@
       "dest": "/"
     }
   ],
-  "env": {
-    "NEXT_PUBLIC_API_URL": "@api_url"
+  "github": {
+    "enabled": true,
+    "silent": true
   }
 }
