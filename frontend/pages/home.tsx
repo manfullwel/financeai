@@ -2,15 +2,15 @@
 
 import { useState, useEffect, Suspense } from 'react';
 import { 
-  TrendingUp, 
-  TrendingDown, 
-  DollarSign, 
-  AlertTriangle,
-  Activity,
-  BarChart2,
-  PieChart,
-  LineChart
-} from 'lucide-react';
+  Home as HomeIcon,
+  AccountBalance as BankIcon,
+  TrendingUp as TrendingUpIcon,
+  Settings as SettingsIcon,
+  Person as UserIcon,
+  Notifications as BellIcon,
+  Search as SearchIcon,
+  Menu as MenuIcon,
+} from '@mui/icons-material';
 import { Box } from '@mui/material';
 import dynamic from 'next/dynamic';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
@@ -45,7 +45,7 @@ const DashboardCard = ({ title, value, trend, icon: Icon, type = 'default' }: { 
         {trend !== undefined && (
           <p className={trendClass}>
             {trend}%
-            {isPositive ? <TrendingUp size={16} /> : <TrendingDown size={16} />}
+            {isPositive ? <TrendingUpIcon size={16} /> : <TrendingUpIcon size={16} />}
           </p>
         )}
       </div>
@@ -104,33 +104,33 @@ export default function Home() {
             <DashboardCard
               title="Saldo Total"
               value="R$ 25.000,00"
-              icon={DollarSign}
+              icon={BankIcon}
             />
             <DashboardCard
               title="Rendimento Mensal"
               value="R$ 2.500,00"
               trend={8.5}
-              icon={TrendingUp}
+              icon={TrendingUpIcon}
               type="market"
             />
             <DashboardCard
               title="Despesas"
               value="R$ 1.800,00"
               trend={-2.3}
-              icon={TrendingDown}
+              icon={TrendingUpIcon}
               type="market"
             />
             <DashboardCard
               title="Alertas"
               value="3"
-              icon={AlertTriangle}
+              icon={BellIcon}
             />
           </div>
 
           <div className="charts-grid">
             <div className="chart-container market-overview">
               <div className="chart-header">
-                <Activity size={24} />
+                <HomeIcon size={24} />
                 <h3>Visão Geral do Mercado</h3>
               </div>
               <ResponsiveContainer width="100%" height={300}>
@@ -152,21 +152,21 @@ export default function Home() {
 
             <div className="indicators-grid">
               <div className="indicator">
-                <BarChart2 size={24} />
+                <HomeIcon size={24} />
                 <div>
                   <h4>Volume de Negociação</h4>
                   <p>R$ 1.5M</p>
                 </div>
               </div>
               <div className="indicator">
-                <PieChart size={24} />
+                <HomeIcon size={24} />
                 <div>
                   <h4>Distribuição de Ativos</h4>
                   <p>32% Ações</p>
                 </div>
               </div>
               <div className="indicator">
-                <LineChart size={24} />
+                <HomeIcon size={24} />
                 <div>
                   <h4>Volatilidade</h4>
                   <p>Baixa</p>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { Card } from '@/components/ui/card';
 import { Alert } from '@/components/ui/alert';
-import { TrendingUp, AlertTriangle, AlertCircle } from 'lucide-react';
+import { TrendingUp as TrendingUpIcon, Warning as AlertTriangleIcon, Error as AlertCircleIcon } from '@mui/icons-material';
 
 interface PredictiveData {
   month: string;
@@ -63,7 +63,7 @@ const FinanceDashboard: React.FC = () => {
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold flex items-center">
-              <TrendingUp className="mr-2 h-5 w-5" />
+              <TrendingUpIcon className="mr-2 h-5 w-5" />
               Taxa de Adimplência
             </h3>
           </div>
@@ -76,7 +76,7 @@ const FinanceDashboard: React.FC = () => {
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold flex items-center">
-              <AlertTriangle className="mr-2 h-5 w-5" />
+              <AlertTriangleIcon className="mr-2 h-5 w-5" />
               Risco de Inadimplência
             </h3>
           </div>
@@ -89,7 +89,7 @@ const FinanceDashboard: React.FC = () => {
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold flex items-center">
-              <AlertCircle className="mr-2 h-5 w-5" />
+              <AlertCircleIcon className="mr-2 h-5 w-5" />
               Alertas de Fraude
             </h3>
           </div>
@@ -142,7 +142,7 @@ const FinanceDashboard: React.FC = () => {
             }`}
           >
             <div className="flex items-center">
-              <AlertCircle className="h-5 w-5 mr-2" />
+              <AlertCircleIcon className="h-5 w-5 mr-2" />
               <span className="font-medium">{alert.message}</span>
             </div>
           </Alert>
